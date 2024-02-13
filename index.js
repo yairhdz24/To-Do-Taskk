@@ -1,4 +1,4 @@
-//dependencies required for the app
+// Dependencias requeridas para la aplicación
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
@@ -6,28 +6,28 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-//render css files
+// Renderizar archivos CSS
 app.use(express.static("public"));
 
-//placeholders for added task
-var task = ["buy socks", "practise with nodejs"];
-//placeholders for removed task
-var complete = ["finish jquery"];
+// Marcadores para las tareas agregadas
+var task = ["Tarea prueba", "practica con nodejs"];
+// Marcadores para las tareas completadas
+var complete = ["Tarea de NodeJs"];
 
-//post route for adding new task 
+// Ruta post para agregar una nueva tarea
 app.post("/addtask", function(req, res) {
     var newTask = req.body.newtask;
-    //add the new task from the post route
+    // Agregar la nueva tarea desde la ruta post
     task.push(newTask);
     res.redirect("/");
 });
 
 app.post("/removetask", function(req, res) {
     var completeTask = req.body.check;
-    //check for the "typeof" the different completed task, then add into the complete task
+    // Verificar el "tipo de" tarea completada, luego agregarla a la lista de tareas completadas
     if (typeof completeTask === "string") {
         complete.push(completeTask);
-        //check if the completed task already exits in the task when checked, then remove it
+    // Verificar si la tarea completada ya existe en la lista de tareas, si es así, eliminarla   
         task.splice(task.indexOf(completeTask), 1);
     } else if (typeof completeTask === "object") {
         for (var i = 0; i < completeTask.length; i++) {
@@ -38,23 +38,20 @@ app.post("/removetask", function(req, res) {
     res.redirect("/");
 });
 
-
 app.post("/cleartasks", function(req, res) {
-    // Clear your tasks array
-    task = [];
-    // Clear your completed tasks array
+    // Limpiar la lista de tareas completadas
     complete = [];
 
-    // Redirect back to the main page
+    // Redirigir de nuevo a la pagina principal
     res.redirect('/');
 });
 
-//render the ejs and display added task, completed task
+// Renderizar el archivo ejs y mostrar las tareas agregadas y completadas
 app.get("/", function(req, res) {
     res.render("index", { task: task, complete: complete });
 });
 
-//set app to listen on port 3000
+
 app.listen(3000, function() {
-    console.log("server is running on port 3000");
+    console.log("Servidor ejecutándose en el puerto 3000");
 });
