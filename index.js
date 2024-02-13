@@ -15,44 +15,44 @@ var task = ["Tarea prueba", "practica con nodejs"];
 var complete = ["Tarea de NodeJs"];
 
 // Ruta post para agregar una nueva tarea
-app.post("/addtask", function(req, res) {
-    var newTask = req.body.newtask;
-    // Agregar la nueva tarea desde la ruta post
-    task.push(newTask);
-    res.redirect("/");
+app.post("/addtask", function (req, res) {
+  var newTask = req.body.newtask;
+  // Agregar la nueva tarea desde la ruta post
+  task.push(newTask);
+  res.redirect("/");
 });
 
-app.post("/removetask", function(req, res) {
-    var completeTask = req.body.check;
-    // Verificar el "tipo de" tarea completada, luego agregarla a la lista de tareas completadas
-    if (typeof completeTask === "string") {
-        complete.push(completeTask);
-    // Verificar si la tarea completada ya existe en la lista de tareas, si es así, eliminarla   
-        task.splice(task.indexOf(completeTask), 1);
-    } else if (typeof completeTask === "object") {
-        for (var i = 0; i < completeTask.length; i++) {
-            complete.push(completeTask[i]);
-            task.splice(task.indexOf(completeTask[i]), 1);
-        }
+app.post("/removetask", function (req, res) {
+  var completeTask = req.body.check;
+  // Verificar el "tipo de" tarea completada, luego agregarla a la lista de tareas completadas
+  if (typeof completeTask === "string") {
+    complete.push(completeTask);
+    // Verificar si la tarea completada ya existe en la lista de tareas, si es así, eliminarla
+    task.splice(task.indexOf(completeTask), 1);
+  } else if (typeof completeTask === "object") {
+    for (var i = 0; i < completeTask.length; i++) {
+      complete.push(completeTask[i]);
+      task.splice(task.indexOf(completeTask[i]), 1);
     }
-    res.redirect("/");
+  }
+  res.redirect("/");
 });
 
-app.post("/cleartasks", function(req, res) {
-    // Limpiar la lista de tareas completadas
-    complete = [];
+app.post("/cleartasks", function (req, res) {
+  // Limpiar la lista de tareas completadas
+  complete = [];
 
-    // Redirigir de nuevo a la pagina principal
-    res.redirect('/');
+  // Redirigir de nuevo a la pagina principal
+  res.redirect("/");
 });
 
 // Renderizar el archivo ejs y mostrar las tareas agregadas y completadas
-app.get("/", function(req, res) {
-    res.render("index", { task: task, complete: complete });
+app.get("/", function (req, res) {
+  res.render("index", { task: task, complete: complete });
 });
 
 // Escuchar en el puerto proporcionado por Heroku o 3000 en local
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, function() {
-    console.log("Servidor ejecutándose en el puerto " + PORT);
+app.listen(PORT, function () {
+  console.log("Servidor ejecutándose en el puerto " + PORT);
 });
