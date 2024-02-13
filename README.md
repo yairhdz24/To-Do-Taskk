@@ -1,6 +1,6 @@
-# Chat en Tiempo Real con Socket.io y Node.js 
+# App de Tareas Pendientes
 
-Esta una aplicación de chat en tiempo real utilizando Socket.io y Node.js. Permite a múltiples usuarios conectarse a una sala de chat y enviar mensajes entre ellos.
+Esta es una aplicación simple de lista de tareas pendientes que te permite agregar, eliminar y marcar tareas como completadas.
 
 ## 📷 Capturas de Pantalla
 
@@ -8,19 +8,21 @@ Esta una aplicación de chat en tiempo real utilizando Socket.io y Node.js. Perm
 
 ## 🚀 Demostración
 
-Puedes ver una demostración en vivo (https://to-do-task-e0a5d551ba03.herokuapp.com/).
+Puedes ver una demostración en vivo [aquí](https://to-do-task-e0a5d551ba03.herokuapp.com/).
 
 ## 🚀 Funcionalidades
 
-- Envío de mensajes en tiempo real.
-- Muestra cuando un usuario está escribiendo.
-- Muestra cuando un usuario se une o deja el chat.
+- Agregar nuevas tareas.
+- Eliminar tareas seleccionadas.
+- Marcar tareas como completadas.
+- Borrar todas las tareas.
 
 ## 🛠 Tecnologías utilizadas
 
 - **Node.js**: Entorno de ejecución para JavaScript.
 - **Express**: Marco de aplicación web para Node.js.
-- **Socket.io**: Biblioteca para aplicaciones web en tiempo real.
+- **EJS**: Motor de plantillas para generar HTML con JavaScript.
+- **CSS**: Para estilos visuales.
 
 ## 💡 Contribuir
 
@@ -32,3 +34,14 @@ Si quieres contribuir a este proyecto, sigue estos pasos:
 4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`).
 5. Abre un Pull Request.
 
+### 💬 Guía de Contribución
+
+Para contribuir al proyecto, sigue estas pautas:
+
+- Siempre asegúrate de trabajar en una rama separada para cada cambio que hagas.
+- Asegúrate de seguir las convenciones de nomenclatura y estilo del código existente.
+- Realiza pruebas exhaustivas de tus cambios antes de solicitar la fusión.
+- Proporciona una descripción clara y concisa de tus cambios en el Pull Request.
+- Si tu contribución soluciona un problema abierto, enlázalo en la descripción del Pull Request.
+
+¡Gracias por contribuir! Tus esfuerzos son apreciados. ✨
