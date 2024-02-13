@@ -51,7 +51,8 @@ app.get("/", function(req, res) {
     res.render("index", { task: task, complete: complete });
 });
 
-
-app.listen(3000, function() {
-    console.log("Servidor ejecutándose en el puerto 3000");
+// Escuchar en el puerto proporcionado por Heroku o 3000 en local
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function() {
+    console.log("Servidor ejecutándose en el puerto " + PORT);
 });
